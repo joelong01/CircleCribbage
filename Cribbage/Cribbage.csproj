@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{2183E63C-4C24-4E7D-ACD1-D73E9E4B86A8}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cribbage</RootNamespace>
+    <AssemblyName>Cribbage</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>Cribbage_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>DCD6581FCEF7FCD0C4EB31486FC221CA9792B52C</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cards\CardContainer.xaml.cs">
+      <DependentUpon>CardContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cards\CardView.xaml.cs">
+      <DependentUpon>CardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cards\VectorCards.xaml.cs">
+      <DependentUpon>VectorCards.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CircleLayout\FlipToPickCardControl.xaml.cs">
+      <DependentUpon>FlipToPickCardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CircleLayout\NewRoundBoardPage.xaml.cs">
+      <DependentUpon>NewRoundBoardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CircleLayout\NewRoundBoardPageHelper.cs" />
+    <Compile Include="CircleLayout\PlayerSetScoreControl.xaml.cs">
+      <DependentUpon>PlayerSetScoreControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CircleLayout\RoundBoardControl.xaml.cs">
+      <DependentUpon>RoundBoardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CircleLayout\RoundRectDivider.xaml.cs">
+      <DependentUpon>RoundRectDivider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CircleLayout\UxEventHandlers.cs" />
+    <Compile Include="ClientStateMachine.cs" />
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\BitmapImageExtensions.cs" />
+    <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\ButtonExtensions.cs" />
+    <Compile Include="Common\ControlExtensions.cs" />
+    <Compile Include="Common\EventAsync.cs" />
+    <Compile Include="Common\FrameworkElementExtensions.cs" />
+    <Compile Include="Common\MediaElementExtensions.cs" />
+    <Compile Include="Common\MersenneTwister.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\ScrollViewerExtensions.cs" />
+    <Compile Include="Common\SelectorExtensions.cs" />
+    <Compile Include="Common\StoryboardExtensions.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Common\VisualTreeHelperExtensions.cs" />
+    <Compile Include="Common\WriteableBitmapExtensions.cs" />
+    <Compile Include="CribbageSvc\CardData.cs" />
+    <Compile Include="CribbageSvc\Combinatorics\Combinations.cs" />
+    <Compile Include="CribbageSvc\Combinatorics\GenerateOption.cs" />
+    <Compile Include="CribbageSvc\Combinatorics\IMetaCollection.cs" />
+    <Compile Include="CribbageSvc\Combinatorics\Permutations.cs" />
+    <Compile Include="CribbageSvc\Combinatorics\SmallPrimeUtility.cs" />
+    <Compile Include="CribbageSvc\Combinatorics\Variations.cs" />
+    <Compile Include="CribbageSvc\CountingPhase.cs" />
+    <Compile Include="CribbageSvc\Crib.cs" />
+    <Compile Include="CribbageSvc\Deck.cs" />
+    <Compile Include="CribbageSvc\Hand.cs" />
+    <Compile Include="CribbageSvc\ICribbageGame.cs" />
+    <Compile Include="CribbageSvc\LocalGame.cs" />
+    <Compile Include="CribbageSvc\Player.cs" />
+    <Compile Include="CribbageSvc\StaticHelpers.cs" />
+    <Compile Include="CribbageView\CribbageView.cs" />
+    <Compile Include="CribbageView\CribbageViewAnimations.cs" />
+    <Compile Include="CribbageView\IHandleUxButtonsClass.cs" />
+    <Compile Include="CribbageView\SaveLoad.cs" />
+    <Compile Include="CribbageView\ViewHintWindow.cs" />
+    <Compile Include="FlyingScore.xaml.cs">
+      <DependentUpon>FlyingScore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogAttribute.cs" />
+    <Compile Include="LoggingHistory\Achievement.xaml.cs">
+      <DependentUpon>Achievement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoggingHistory\CardScoreHistory.xaml.cs">
+      <DependentUpon>CardScoreHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoggingHistory\LogTrace.cs" />
+    <Compile Include="LoggingHistory\LogViewer.xaml.cs">
+      <DependentUpon>LogViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoggingHistory\OneHandHistoryCtrl.xaml.cs">
+      <DependentUpon>OneHandHistoryCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoggingHistory\ScoreHistoryCtrl2.xaml.cs">
+      <DependentUpon>ScoreHistoryCtrl2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoggingHistory\SettingsCtrl.xaml.cs">
+      <DependentUpon>SettingsCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoggingHistory\StatsViewControl.xaml.cs">
+      <DependentUpon>StatsViewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewPegControl.xaml.cs">
+      <DependentUpon>NewPegControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PromptUserDlg.xaml.cs">
+      <DependentUpon>PromptUserDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScrollingTextControl.xaml.cs">
+      <DependentUpon>ScrollingTextControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SharedDefinitions.cs" />
+    <Compile Include="UiState.cs" />
+    <Compile Include="UxControls\CircleControl.xaml.cs">
+      <DependentUpon>CircleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UxControls\CountCtrl.xaml.cs">
+      <DependentUpon>CountCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UxControls\Extensions.cs" />
+    <Compile Include="UxControls\HintWindow.xaml.cs">
+      <DependentUpon>HintWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UxControls\Number.xaml.cs">
+      <DependentUpon>Number.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UxControls\PegControl.xaml.cs">
+      <DependentUpon>PegControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UxControls\ScoreHistoryView.xaml.cs">
+      <DependentUpon>ScoreHistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UxControls\ScoreSummaryView.xaml.cs">
+      <DependentUpon>ScoreSummaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UxControls\TestGridCtrl.xaml.cs">
+      <DependentUpon>TestGridCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UxControls\TutorialControl.xaml.cs">
+      <DependentUpon>TutorialControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UxControls\XAMLValueConverters.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="Cribbage_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\alibaster.png" />
+    <Content Include="Assets\BigSplash.png" />
+    <Content Include="Assets\burledmaple.png" />
+    <Content Include="Assets\burledmaple2.png" />
+    <Content Include="Assets\cherry.png" />
+    <Content Include="Assets\felt.png" />
+    <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\Logo.scale-140.png" />
+    <Content Include="Assets\Logo.scale-180.png" />
+    <Content Include="Assets\Logo.scale-80.png" />
+    <Content Include="Assets\longshot.png" />
+    <Content Include="Assets\maple.png" />
+    <Content Include="Assets\marquetry.png" />
+    <Content Include="Assets\mother of pearl.png" />
+    <Content Include="Assets\ruby.png" />
+    <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\SmallLogo.scale-140.png" />
+    <Content Include="Assets\SmallLogo.scale-180.png" />
+    <Content Include="Assets\SmallLogo.scale-80.png" />
+    <Content Include="Assets\SmallLogo.targetsize-16.png" />
+    <Content Include="Assets\SmallLogo.targetsize-256.png" />
+    <Content Include="Assets\SmallLogo.targetsize-32.png" />
+    <Content Include="Assets\SmallLogo.targetsize-48.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-140.png" />
+    <Content Include="Assets\SplashScreen.scale-180.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-140.png" />
+    <Content Include="Assets\StoreLogo.scale-180.png" />
+    <Content Include="Assets\TraditionalBoard.png" />
+    <Content Include="Assets\walnut.png" />
+    <Content Include="Assets\WideLogo.scale-100.png" />
+    <Content Include="Assets\WideLogo.scale-140.png" />
+    <Content Include="Assets\WideLogo.scale-180.png" />
+    <Content Include="Assets\WideLogo.scale-80.png" />
+    <Content Include="Common\ReadMe.txt" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Cards\CardContainer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Cards\CardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Cards\VectorCards.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CircleLayout\FlipToPickCardControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CircleLayout\NewRoundBoardPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CircleLayout\PlayerSetScoreControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CircleLayout\RoundBoardControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CircleLayout\RoundRectDivider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FlyingScore.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoggingHistory\Achievement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoggingHistory\CardScoreHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoggingHistory\LogViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoggingHistory\OneHandHistoryCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoggingHistory\ScoreHistoryCtrl2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoggingHistory\SettingsCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoggingHistory\StatsViewControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewPegControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PromptUserDlg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ScrollingTextControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StringResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UxControls\CircleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UxControls\CountCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UxControls\HintWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UxControls\Number.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UxControls\PegControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UxControls\ScoreHistoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UxControls\ScoreSummaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UxControls\TestGridCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UxControls\TutorialControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Icons\" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
