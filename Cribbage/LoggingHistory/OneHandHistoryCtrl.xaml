@@ -1,0 +1,121 @@
+﻿<UserControl
+    x:Class="Cribbage.OneHandHistoryCtrl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cribbage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+    Width="310" Height="400">
+
+    <UserControl.RenderTransform>
+        <ScaleTransform ScaleX="1" ScaleY="1" />
+    </UserControl.RenderTransform>
+
+    <Border HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" BorderBrush="{StaticResource CardColor}" BorderThickness="3" CornerRadius="10">
+
+        <Grid x:Name="LayoutRoot" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="110*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="110*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="110*"/>
+
+
+
+            </Grid.RowDefinitions>
+
+            <TextBox x:Name="_txtPlayerLable" Text="Player:"      Style="{StaticResource CribbageTextBox}" 
+				Grid.Row="0" Grid.RowSpan="1"  Grid.ColumnSpan="3"
+				HorizontalAlignment="Left"  VerticalAlignment="Center" 
+				FontSize="12" Background="Transparent" Foreground="White" BorderBrush="Transparent" IsReadOnly="True"  />
+            <TextBox x:Name="_txtComputerLable" Text="Computer:"  Style="{StaticResource CribbageTextBox}" 
+				Grid.Row="2"  Grid.RowSpan="1" Grid.ColumnSpan="1"
+				HorizontalAlignment="Left"  VerticalAlignment="Center" 
+				FontSize="12"  Background="Transparent" Foreground="White" BorderBrush="Transparent" IsReadOnly="True"/>
+            <TextBox Text="Shared: " Style="{StaticResource CribbageTextBox}" 
+				Grid.Row="2"  Grid.Column="2" Grid.ColumnSpan="1" 
+				HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="12"  Background="Transparent" Foreground="White" BorderBrush="Transparent" IsReadOnly="True" />
+            <TextBox x:Name="_txtCribCaption" Text="Crib: "         Style="{StaticResource CribbageTextBox}" 
+				Grid.Row="4" Grid.ColumnSpan="3"
+				FontSize="12" Background="Transparent" Foreground="White" BorderBrush="Transparent" IsReadOnly="True" HorizontalAlignment="Left" Margin="0"  />
+
+
+            <Border BorderBrush="{StaticResource CardColor}" BorderThickness="2" CornerRadius="6" Margin="2"
+				Grid.Row="1" Grid.Column="0"  Grid.RowSpan="1" Grid.ColumnSpan="1" >
+                <Grid  x:Name="_gridPlayerCards" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>                                                
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                       <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle x:Name="_playerC1"   Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                    <Rectangle x:Name="_playerC2"   Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                    <Rectangle x:Name="_playerC3"   Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                    <Rectangle x:Name="_playerC4"   Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>                  
+                </Grid>
+            </Border>
+
+            <Border BorderBrush="{StaticResource CardColor}" BorderThickness="2" CornerRadius="6" Margin="2"
+				Grid.Row="3" Grid.Column="0"  Grid.RowSpan="1" Grid.ColumnSpan="1" >
+                <Grid  x:Name="_gridComputerCards" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle x:Name="_computerC1" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                    <Rectangle x:Name="_computerC2" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                    <Rectangle x:Name="_computerC3" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                    <Rectangle x:Name="_computerC4" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                </Grid>                  
+            </Border>
+
+
+            <Border BorderBrush="{StaticResource CardColor}" BorderThickness="2" CornerRadius="6" Margin="2"
+				Grid.Row="5" Grid.Column="0"  Grid.RowSpan="1" Grid.ColumnSpan="1" >
+                <Grid  x:Name="_gridCribCards" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle x:Name="_cribC1" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                    <Rectangle x:Name="_cribC2" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                    <Rectangle x:Name="_cribC3" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                    <Rectangle x:Name="_cribC4" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>                    
+                </Grid>
+            </Border>
+
+            <Border BorderBrush="{StaticResource CardColor}" BorderThickness="2" CornerRadius="6" Margin="2"
+				Grid.Row="3" Grid.Column="2"  Grid.RowSpan="1" Grid.ColumnSpan="1" >
+                <Grid  x:Name="_gridSharedCard" >
+                    <Rectangle x:Name="_sharedC1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="Black" Fill="{StaticResource CardColor}" Margin="2" RadiusX="3" RadiusY="3" StrokeThickness="2"/>
+                </Grid>
+            </Border>
+
+        </Grid>
+    </Border>
+</UserControl>

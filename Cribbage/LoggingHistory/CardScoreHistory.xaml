@@ -1,0 +1,67 @@
+﻿<UserControl
+    x:Class="Cribbage.CardScoreHistory"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cribbage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+   x:Name="userControl"
+    d:DesignHeight="300"
+    d:DesignWidth="450"
+    PointerPressed="LayoutRoot_PointerPressed" PointerReleased="LayoutRoot_PointerReleased" PointerMoved="LayoutRoot_PointerMoved">
+
+    <UserControl.Resources>
+        <Storyboard x:Name="ScoreHistoryAnimatePosition">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="userControl" >
+                <SplineDoubleKeyFrame x:Name="_xAnimation"  KeyTime="0:0:1" Value="500"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <UserControl.RenderTransform>
+        <CompositeTransform/>
+    </UserControl.RenderTransform>
+
+    <Grid Name="LayoutRoot" Margin="0" PointerPressed="LayoutRoot_PointerPressed" PointerReleased="LayoutRoot_PointerReleased" PointerMoved="LayoutRoot_PointerMoved" >       
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.ColumnSpan="4" Grid.RowSpan="5" RadiusX="60" RadiusY="60" Margin="-50,0,0,0">
+            <Rectangle.Fill>
+                <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/cherry.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+            
+        <Border Name="_borderRight" BorderThickness="5,0,0,0" BorderBrush="{StaticResource LineBrush}" Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Canvas.ZIndex="100"/>
+        <StackPanel Name="_grabBarRight" Grid.Row="2" Grid.Column="3" Grid.RowSpan="1" Grid.ColumnSpan="1">
+            <local:CircleControl x:Name="_circle1" Grid.Row="6"  Grid.Column="9" HorizontalAlignment="Center" Height="15" Margin="2,3,3,2"  VerticalAlignment="Center" Width="15"/>
+            <local:CircleControl x:Name="_circle2" Grid.Row="7"  Grid.Column="9" HorizontalAlignment="Center" Height="15" Margin="2,3,3,2"  VerticalAlignment="Center" Width="15" />
+            <local:CircleControl x:Name="_circle3" Grid.Row="8"  Grid.Column="9" HorizontalAlignment="Center" Height="15" Margin="2,3,3,2"  VerticalAlignment="Center" Width="15" />
+        </StackPanel>
+
+        <ListView Name="_listHands" SelectionMode="None" Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="1" ItemsSource="{Binding Mode=TwoWay}" Background="Gray">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Top" />
+                    <Setter Property="Margin" Value="0 -6 0 -6" />
+                    <Setter Property="Padding" Value="0 0 0 0" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+
+    </Grid>
+</UserControl>

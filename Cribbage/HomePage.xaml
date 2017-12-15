@@ -1,0 +1,153 @@
+﻿<Page
+    x:Class="Cribbage.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cribbage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Width="860" Height="540">
+
+    <Grid Background="{StaticResource bmFelt}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="600*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="600"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="400*"/>
+        </Grid.ColumnDefinitions>
+
+        <local:RoundBoardControl x:Name="_board" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3"  />
+        <local:CountCtrl  x:Name="_ctrlCount" Canvas.ZIndex="200" Opacity="0" Count="0"
+                          Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" 
+                          VerticalAlignment="Center" HorizontalAlignment="Center" 
+                          LogicalParent="{Binding ElementName=_gridCrib}" >
+
+        </local:CountCtrl>
+
+        <Grid Name="_gridHintWindow"  Grid.Column="5" Grid.RowSpan="3"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="9.754,0,-0.571,0.429" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="15"/>
+            </Grid.RowDefinitions>
+
+
+
+            <local:HintWindow x:Name="_hintWindow" RenderTransformOrigin="0.5,0.5"  Canvas.ZIndex="10"  
+                          Grid.Column="0" Grid.Row="1"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" />
+        </Grid>
+
+        <Grid x:Name="Grid_InnerCircle" Margin="6"
+    			Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="200*"/>
+                <RowDefinition Height="40*"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="PlayGrid"   Margin="5" Background="Transparent"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            		  Grid.Column="0" Grid.Row="1" Grid.RowSpan="1" 
+                      RenderTransformOrigin="0.5,0.5" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="600*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="106*"/>
+                    <RowDefinition Height= "24*"/>
+                    <RowDefinition Height="29*"/>
+                    <RowDefinition Height="106*"/>
+                    <RowDefinition Height="52*"/>
+                    <RowDefinition Height="106*"/>
+                </Grid.RowDefinitions>
+                <Grid.Projection>
+                    <PlaneProjection/>
+                </Grid.Projection>
+
+
+                <Grid.RenderTransform>
+                    <CompositeTransform/>
+                </Grid.RenderTransform>
+
+
+                <Viewbox Grid.Row="2" Grid.RowSpan="1">
+                    <TextBlock x:Name="_lblCrib" Foreground="White" Text="Crib" Canvas.ZIndex="1" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource CribbageTextBlock}" />
+                </Viewbox>
+                <Viewbox Grid.Column="4" Grid.Row="2" Grid.RowSpan="1">
+                    <TextBlock Foreground="White" Text="Deck" FontSize="16" Canvas.ZIndex="1" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource CribbageTextBlock}" />
+                </Viewbox>
+
+                <Viewbox Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" >
+                    <TextBlock x:Name="_tbCribOwner" Text="{Binding Path=UIString_PlayerCrib, Mode=OneWay}" Style="{StaticResource CribbageTextBlock}"/>
+                </Viewbox>
+                <local:CardContainer x:Name="_gridComputer"     Canvas.ZIndex="10"  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Margin="0" CardLayout="Full"       FriendlyName="ComputerCards" MaxSelected="0" Selectable="False"/>
+                <local:CardContainer x:Name="_gridPlayedCards"  Canvas.ZIndex="10"  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="1" Margin="0" CardLayout="PlayedOverlapped" FriendlyName="PlayedCards"   MaxSelected="0" Selectable="False"/>
+                <local:CardContainer x:Name="_gridPlayer"       Canvas.ZIndex="10"  Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1" Margin="0" CardLayout="Full"       FriendlyName="PlayerCards"   MaxSelected="2" Selectable="True"/>
+                <local:CardContainer x:Name="_gridDeck"         Canvas.ZIndex="10"  Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="1" Margin="0" CardLayout="Stacked"    FriendlyName="Deck"          MaxSelected="0" Selectable="False" />
+                <local:CardContainer x:Name="_gridCrib"         Canvas.ZIndex="10"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" Margin="0" CardLayout="Stacked"    FriendlyName="Crib"          MaxSelected="0" Selectable="False"/>
+
+
+            </Grid>
+
+
+
+
+
+
+
+
+
+
+        </Grid>
+
+    </Grid>
+    <Page.BottomAppBar>
+        <AppBar x:Name="_appBarBottom">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="426*"/>
+                    <ColumnDefinition Width="247*"/>
+                </Grid.ColumnDefinitions>
+
+                <Rectangle Grid.ColumnSpan="2" Fill="{StaticResource LineBrush}" >
+
+                </Rectangle>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="_btnNewGame" Click="OnNewGame"          ToolTipService.ToolTip="New Game" Style="{StaticResource NewWindowAppBarButtonStyle}" />
+                    <Button Name="_btnOnSave"  Click="OnSaveGame"         ToolTipService.ToolTip="Save Game" Style="{StaticResource SaveAppBarButtonStyle}" IsEnabled="false" />
+                    <Button Name="_btnOnOpen"  Click="OnOpenGame"         ToolTipService.ToolTip="Open Game" Style="{StaticResource OpenFileAppBarButtonStyle}"  />
+                    <Button Name="_btnGetSuggestion" Click="OnGetSuggestedCard" ToolTipService.ToolTip="Get Suggestion" Style="{StaticResource HelpAppBarButtonStyle}" Margin="0"/>                    
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal"  >
+                    <Button x:Name="_btnShowStats" Click="OnShowStats" Style="{StaticResource StatsAppBarButtonStyle}" />
+                    <Button x:Name="_btnShowLog" Click="OnShowLogFile" Style="{StaticResource ShowLogAppBarButtonStyle}"/>
+                    <Button x:Name="_btnOptions" Click="OnOptions" Style="{StaticResource SettingsAppBarButtonStyle}"/>
+
+
+                </StackPanel>
+
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+
+</Page>

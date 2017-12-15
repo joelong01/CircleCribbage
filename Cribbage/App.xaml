@@ -1,0 +1,236 @@
+﻿<Application
+    x:Class="Cribbage.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cribbage">
+
+    <Application.Resources>
+        <ResourceDictionary>
+
+
+            <Style x:Key="ePlayerEllipseStyle" TargetType="Ellipse">
+                <Setter Property="Fill" Value="{StaticResource bmCherry}" />
+                <Setter Property="Stroke" Value="Black"/>
+                <Setter Property="Height" Value="{Binding Path=EllipseDiameter, FallbackValue=12}"/>
+                <Setter Property="Width"  Value="{Binding Path=EllipseDiameter, FallbackValue=12}"/>
+                <Setter Property="Margin" Value="0,1,0,1" />
+                <Setter Property="VerticalAlignment" Value="bottom"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Tag" Value="Score"/>
+            </Style>
+            <Style x:Key="checkboxLeftSideText" TargetType="CheckBox">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" >
+                                <ContentPresenter Content="{TemplateBinding Content}" Height="Auto" HorizontalAlignment="Left" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="RepeatButtonScoreUpDownStyle" TargetType="RepeatButton">
+                <Setter Property="FontFamily" Value="Wingdings"/>
+                <Setter Property="FontSize" Value="64"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            <Style x:Key="ScoreCheckButtonStyle" TargetType="Button">
+                <Setter Property="FontFamily" Value="WebDings"/>
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="FontSize" Value="200" />
+            </Style>
+
+            <Style x:Key="SliderThumbStyle" TargetType="Slider">
+                <Setter Property="Height" Value="14"/>
+                <Setter Property="Width" Value="14"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Slider">
+                            <Ellipse 
+                              Name="Ellipse" 
+                              Fill="Black"
+                              Stroke="Black"
+                              StrokeThickness="1" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <SolidColorBrush x:Key="LineBrush" Color="#FF621C02"/>
+            <SolidColorBrush x:Key="LineBrushLowOpacity" Color="#AA621C02"/>
+            <SolidColorBrush x:Key="CardColor" Color="#FF621C02" />
+            <SolidColorBrush x:Key="SelectColor" Color="#E52D5B2D" />
+            <LinearGradientBrush x:Key="GoldToWhiteBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0.2"/>
+                <GradientStop Color="Gold" Offset="0.9"/>
+            </LinearGradientBrush>
+
+
+            <Style x:Key="CribbageTextBox" TargetType="TextBox">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontWeight" Value="SemiLight" />
+            </Style>
+
+            <Style x:Key="CribbageTextBlock" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontWeight" Value="SemiLight" />
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+
+            <Style x:Key="UiStateTextBlock" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+
+            <Style x:Key="UiStateTextBox" TargetType="TextBox">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="{StaticResource LineBrush}"/>
+                <Setter Property="IsHitTestVisible" Value="False" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="TextAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+
+
+            <Style x:Key="UiStateTextBoxSquarePage" TargetType="TextBox">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="IsHitTestVisible" Value="False" />
+                <Setter Property="IsReadOnly" Value="True" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="TextAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+
+            <Style x:Key="UiStateTextBlockSquarePage" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="{StaticResource GoldToWhiteBrush}"/>
+                <Setter Property="IsHitTestVisible" Value="False" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="TextAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+
+
+
+            <Style x:Key="CribbageButton" TargetType="Button">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontWeight" Value="SemiLight" />
+            </Style>
+
+            <Style x:Key="CardGridBorderStyle" TargetType="Border">
+                <Setter Property="BorderBrush" Value="{StaticResource LineBrush}"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="Margin" Value="-2" />
+            </Style>
+
+            <Style x:Key="CircleRepeatButtonStyle" TargetType="RepeatButton">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RepeatButton">
+                            <Grid>
+                                <Ellipse Fill="{TemplateBinding Background}"
+                             Stroke="{TemplateBinding BorderBrush}"/>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="CircleButtonStyle" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse Fill="{TemplateBinding Background}"
+                             Stroke="{TemplateBinding BorderBrush}"/>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="ScoreStyle" TargetType="ListViewItem">
+                <Setter Property="FontFamily" Value="Century Schoolbook" />
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <Style x:Key="SettingCheckBoxStyle" TargetType="CheckBox">
+                <Setter Property="Foreground" Value="white" />
+                <Setter Property="IsChecked" Value="False" />
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontWeight" Value="SemiLight" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Margin" Value="28,10,10,10" />
+            </Style>
+
+            <Style x:Key="SettingRadioButtonStyle" TargetType="RadioButton">
+                <Setter Property="Foreground" Value="white" />
+                <Setter Property="IsChecked" Value="False" />
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontWeight" Value="SemiLight" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Margin" Value="5" />
+            </Style>
+
+            <Style x:Key="SettingBorderStyle" TargetType="Border">
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="BorderBrush" Value="White" />
+                <Setter Property="Margin" Value="20,10,20,10" />
+            </Style>
+
+
+            <DataTemplate x:Key="dtCardList">
+                <Rectangle x:Name="DefaultRectangle" Stroke="Black" StrokeThickness="2" RadiusX="5" RadiusY="5" Width="156" Height="228">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="{Binding ResourceUri}" Stretch="Fill"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </DataTemplate>
+
+            <DataTemplate x:Key="dtScoreGridView">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Description}" Style="{StaticResource CribbageTextBlock}" FontSize="20" FontWeight="Bold" Padding="100,0,0,0" />
+                    <TextBlock Text="{Binding Score}" Style="{StaticResource CribbageTextBlock}" FontSize="20" FontWeight="Bold" Padding="100,0,0,0" />
+                </StackPanel>
+            </DataTemplate>
+
+            <ImageBrush x:Key="bmCherry" ImageSource="Assets/cherry.png" Stretch="Fill" />
+            <ImageBrush x:Key="bmMarquetry" ImageSource="Assets/marquetry.png" Stretch="None" />
+            <ImageBrush x:Key="bmAlibaster" ImageSource="Assets/alibaster.png" Stretch="None"/>
+            <ImageBrush x:Key="bmMaple" ImageSource="Assets/maple.png" Stretch="Fill" />
+            <ImageBrush x:Key="bmRuby" ImageSource="Assets/ruby.png" Stretch="Fill" />
+            <ImageBrush x:Key="bmMotherOfPearl" ImageSource="Assets/mother of pearl.png" Stretch="Fill" />
+            <ImageBrush x:Key="bmWalnut" ImageSource="Assets/walnut.png" Stretch="Fill" />
+            <ImageBrush x:Key="bmBurledMaple" ImageSource="Assets/burledmaple.png" Stretch="Fill" />
+            <ImageBrush x:Key="bmBurledMaple2" ImageSource="Assets/burledmaple2.png" Stretch="Fill" />
+            <ImageBrush x:Key="bmFelt" ImageSource="Assets/felt.png" Stretch="Fill" />
+
+
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="StringResources.xaml"/>
+                <ResourceDictionary Source="Common/StandardStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

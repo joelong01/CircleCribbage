@@ -1,0 +1,84 @@
+﻿<UserControl
+    x:Class="Cribbage.PlayerSetScoreControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cribbage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="300" >
+
+    <UserControl.Resources>
+        <Storyboard x:Name="RollInScore">
+            <DoubleAnimation x:Name="Animation_Angle_RollIn" Duration="0:0:1" To="360" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="LayoutRoot" d:IsOptimized="True"/>
+            <DoubleAnimation x:Name="Animation_X_RollIn" Duration="0:0:1" To="230" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="LayoutRoot" d:IsOptimized="True"/>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid Name="LayoutRoot" Canvas.ZIndex="5" Grid.Column="0" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Background="Transparent" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="34*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="117*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="34*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RenderTransform>
+            <CompositeTransform/>
+        </Grid.RenderTransform>
+
+        <Ellipse Name="ButtonGrid_OuterEllipse" Grid.Row="0" Grid.ColumnSpan="9" Grid.RowSpan="9" 
+                     HorizontalAlignment="Stretch" Stroke="{StaticResource LineBrush}" VerticalAlignment="Stretch" Fill="{StaticResource bmCherry}"/>
+        <Ellipse Name="ButtonGrid_InnerEllipse" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="7" Grid.RowSpan="7"
+                     HorizontalAlignment="Stretch" Stroke="{StaticResource LineBrush}" VerticalAlignment="Stretch" Fill="{StaticResource bmMarquetry}" />
+        <Rectangle Grid.Row="1" Grid.RowSpan="7" Grid.Column="4" Fill="{StaticResource LineBrush}" Stroke="{StaticResource LineBrush}"  />
+        <Rectangle Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7" Fill="{StaticResource LineBrush}"  Stroke="{StaticResource LineBrush}"/>
+        <Viewbox Grid.Row="2" Grid.Column="6"   Grid.ColumnSpan="1" Grid.RowSpan="1">
+            <TextBlock x:Name="_txtScore" Text="{Binding Path=Score, Mode=TwoWay}" Style="{StaticResource CribbageTextBlock}" VerticalAlignment="Center" />
+        </Viewbox>
+        <Viewbox Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="UniformToFill">
+            <Button x:Name="_btnSetScore"  Margin="0" Padding="0"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
+        		ToolTipService.ToolTip="Accept Score" BorderBrush="Transparent"
+        		Content="a" Style="{StaticResource ScoreCheckButtonStyle}" />
+        </Viewbox>
+
+
+        <Viewbox Grid.Row="2" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="3" 
+                 HorizontalAlignment="Right"  >
+
+            <RepeatButton x:Name="_btnUpScore" Click="ButtonUpScore_Click" VerticalAlignment="Center" BorderBrush="Transparent" RenderTransformOrigin="0.5,0.5"
+        		Content="ç" Style="{StaticResource RepeatButtonScoreUpDownStyle}" >
+                <RepeatButton.RenderTransform>
+                    <CompositeTransform Rotation="90" />
+                </RepeatButton.RenderTransform>
+            </RepeatButton>
+        </Viewbox>
+        <Viewbox Grid.Row="4" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="2"
+        	HorizontalAlignment="Right" VerticalAlignment="Center">
+
+            <RepeatButton x:Name="_btnDownScore" Click="ButtonDownScore_Click" BorderBrush="Transparent"
+        		Content="ç" Style="{StaticResource RepeatButtonScoreUpDownStyle}" RenderTransformOrigin="0.5,0.5" >
+                <RepeatButton.RenderTransform>
+                    <CompositeTransform Rotation="-90" TranslateX="0" CenterX="0" CenterY="0" />
+                </RepeatButton.RenderTransform>
+            </RepeatButton>
+        </Viewbox>
+
+    </Grid>
+</UserControl>
